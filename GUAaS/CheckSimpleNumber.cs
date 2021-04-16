@@ -2,12 +2,8 @@
 
 namespace GUAaS
 {
-    class Program
+    public class CheckSimpleNumber
     {
-
-
-
-
 
         static void Main(string[] args)
         {
@@ -18,12 +14,9 @@ namespace GUAaS
             } while (!int.TryParse(Console.ReadLine(), out n));
             Console.WriteLine($"number is simple: {IsNumberIsSimple(n)}");
 
-
-
-
         }
 
-        private static bool IsNumberIsSimple(int n)
+        public static bool IsNumberIsSimple(int n)
         {
             int d = 0,
                 i = 2;
