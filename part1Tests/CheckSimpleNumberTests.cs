@@ -29,11 +29,11 @@ namespace GUAaS.Tests
 
 
         [TestMethod()]
-        public void IsNumberIsSimpleTest_Input5_ReturnsFalse() // сдесь условия нарушены
+        public void IsNumberIsSimpleTest_Input5_ReturnsFalse()
         {
             var result = CheckSimpleNumber.IsNumberIsSimple(5);
 
-            Assert.IsFalse(result);
+            Assert.IsTrue(result);
         }
 
 
@@ -47,11 +47,11 @@ namespace GUAaS.Tests
 
 
         [TestMethod()]
-        public void IsNumberIsSimpleTest_Input11_ReturnsTrue() // сдесь условия нарушены
+        public void IsNumberIsSimpleTest_Input11_ReturnsTrue()
         {
             var result = CheckSimpleNumber.IsNumberIsSimple(11);
 
-            Assert.IsFalse(result);
+            Assert.IsTrue(result);
         }
 
     }

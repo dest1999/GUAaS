@@ -14,7 +14,7 @@ namespace part2
         }
         
         
-        public static int StrangeSum(int[] inputArray) // n - кол-во эл-тов массива
+        public int StrangeSum(int[] inputArray) // n - кол-во эл-тов массива
         {
             int sum = 0;
             for (int i = 0; i < inputArray.Length; i++)

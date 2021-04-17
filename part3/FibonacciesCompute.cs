@@ -7,7 +7,7 @@ namespace part3
         static void Main(string[] args)
         {
             
-            const int n = 2;//вычисляем от 46
+            const int n = 46;//вычисляем от 46
 
             //далее сравнение производительности цикла и рекурсии
             DateTime timeRec = DateTime.Now;
