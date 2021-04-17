@@ -30,10 +30,10 @@ namespace part2.Tests
         }
 
         [TestMethod()]
-        public void StrangeSumTest_InputAssertArray_Returns93()
+        public void StrangeSumTest_InputAssertArray_ReturnsNeg93() //сдесь будет ошибка
         {
             int[] ArrangeArray = { 10, 20, -30 };
-            int expected = 93;
+            int expected = -93;
             int actual = StrangeSumClass.StrangeSum(ArrangeArray);
             Assert.AreEqual(expected, actual);
         }
