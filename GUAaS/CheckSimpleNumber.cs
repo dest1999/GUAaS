@@ -16,12 +16,12 @@ namespace GUAaS
 
         }
 
-        public static bool IsNumberIsSimple(int n)
+        public static bool IsNumberIsSimple(int n) //сложность метода O(n)
         {
             int d = 0,
                 i = 2;
 
-            while (i < n) //сложность O(n)
+            while (i < n)
             {
                 if (n % i == 0)
                 {
@@ -30,14 +30,7 @@ namespace GUAaS
                 i++;
             }
 
-            if (d == 0)
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
+            return d == 0 ? true : false;
         }
     }
 }

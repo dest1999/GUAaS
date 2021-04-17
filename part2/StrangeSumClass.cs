@@ -6,10 +6,11 @@ using System.Threading.Tasks;
 
 namespace part2
 {
-    class StrangeSumClass
+    public class StrangeSumClass
     {
         static void Main(string[] args)
         {
+
         }
         
         
@@ -34,7 +35,7 @@ namespace part2
                 }
             }
 
-            return sum; // сложность O(n^3)
+            return sum; // сложность метода O(n^3)
         }
     }
 
