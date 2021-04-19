@@ -6,8 +6,8 @@ namespace part3
     {
         static void Main(string[] args)
         {
-            
-            const int n = 46;//вычисляем от 46
+
+            /*const int n = 46;//вычисляем от 46
 
             //далее сравнение производительности цикла и рекурсии
             DateTime timeRec = DateTime.Now;
@@ -19,7 +19,22 @@ namespace part3
             TimeSpan tsCicle = DateTime.Now - timeCicle;
 
             Console.WriteLine($"Recursively: {resultR}, time: {tsRec}");
-            Console.WriteLine($"Cicle: {resultC}, time {tsCicle}");
+            Console.WriteLine($"Cicle: {resultC}, time {tsCicle}");*/
+
+            for (int i = 0; i <= 55; i++)
+            {
+                DateTime timeRec = DateTime.Now;
+                int resultR = FibonacciRecurse(i);
+                TimeSpan tsRec = DateTime.Now - timeRec;
+
+                Console.WriteLine($"{i}:, time: {tsRec}");
+
+            }
+
+
+
+
+
         }
 
         public static int FibonacciCycle(int n) //сложность метода O(n)
