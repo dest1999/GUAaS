@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Part1;
+using System;
 //TODO Требуется реализовать класс двусвязного списка и операции вставки, удаления и поиска элемента в нём в соответствии с интерфейсом
 namespace GUAaS
 {
@@ -6,8 +7,38 @@ namespace GUAaS
     {
         static void Main(string[] args)
         {
-            
-            Console.WriteLine("Hello World!");
+            //Console.WriteLine("Hello World!");
+
+            var list = new LinkedList();
+
+            for (int i = 1; i <= 5; i++)
+            {
+                list.AddNode(i);
+            }
+
+            //Node n = list.FindNode(6);
+            list.RemoveNode(4);
+            //list.RemoveNode(4);
+            list.RemoveNode(3);
+            list.RemoveNode(2);
+            list.RemoveNode(1);
+            list.RemoveNode(0);
+
+            list.AddNode(1);
+            list.AddNode(2);
+            list.AddNode(3);
+            list.AddNode(4);
+            list.AddNode(5);
+            list.AddNode(6);
+            list.AddNode(7);
+
+
+
+
+
+
+
+
         }
     }
 }
