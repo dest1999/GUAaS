@@ -3,51 +3,26 @@ using System;
 //TODO Требуется реализовать класс двусвязного списка и операции вставки, удаления и поиска элемента в нём в соответствии с интерфейсом
 namespace GUAaS
 {
-    class Program
+    class Program : BinSearchClass
     {
         static void Main(string[] args)
         {
-            //Console.WriteLine("Hello World!");
-
-            var list = new LinkedList();
-
-            for (int i = 1; i <= 5; i++)
+            Random rnd = new Random();
+            int arraySize = 1;
+            var arr = new int[arraySize];
+            for (int i = 0; i < arr.Length; i++)
             {
-                list.AddNode(i);
+                arr[i] = rnd.Next(100);
             }
-
-            foreach (var item in list.ToArray())
+            Array.Sort(arr);
+            foreach (var item in arr)
             {
-                Console.WriteLine(item); ;
-            }
-
-            //Node n = list.FindNode(6);
-            list.RemoveNode(4);
-            //list.RemoveNode(4);
-            list.RemoveNode(3);
-            list.RemoveNode(2);
-            list.RemoveNode(1);
-            list.RemoveNode(0);
-
-            foreach (var item in list.ToArray())
-            {
-                Console.WriteLine("* "+ item);
-            }
-
-            list.AddNode(1);
-            list.AddNode(2);
-            list.AddNode(3);
-            list.AddNode(4);
-            list.AddNode(5);
-            list.AddNode(6);
-            list.AddNode(7);
-
-            foreach (var item in list.ToArray())
-            {
-                Console.WriteLine(item); ;
+                Console.Write(item + " ");
             }
 
 
+            int result = BinarySearch(arr, 10);
+            Console.WriteLine((result == -1) ? "not found" : result);
 
 
 
