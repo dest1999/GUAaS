@@ -6,11 +6,25 @@ using System.Threading.Tasks;
 
 namespace Part1
 {
-    class LinkedList : ILinkedList
+    public class LinkedList : ILinkedList
     {
         int count = 0;
         Node head, tail;
         
+        public int[] ToArray()
+        {
+            var arr = new int[count];
+            Node currentNode = head;
+
+            for (int i = 0; i < count; i++)
+            {
+                arr[i] = currentNode.Value;
+                currentNode = currentNode.NextNode;
+            }
+
+            return arr;
+        }
+
         public void AddNode(int value)
         {// добавляем в конец, сложность метода O(1)
             if (count == 0)

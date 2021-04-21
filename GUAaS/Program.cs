@@ -16,6 +16,11 @@ namespace GUAaS
                 list.AddNode(i);
             }
 
+            foreach (var item in list.ToArray())
+            {
+                Console.WriteLine(item); ;
+            }
+
             //Node n = list.FindNode(6);
             list.RemoveNode(4);
             //list.RemoveNode(4);
@@ -23,6 +28,11 @@ namespace GUAaS
             list.RemoveNode(2);
             list.RemoveNode(1);
             list.RemoveNode(0);
+
+            foreach (var item in list.ToArray())
+            {
+                Console.WriteLine("* "+ item);
+            }
 
             list.AddNode(1);
             list.AddNode(2);
@@ -32,7 +42,10 @@ namespace GUAaS
             list.AddNode(6);
             list.AddNode(7);
 
-
+            foreach (var item in list.ToArray())
+            {
+                Console.WriteLine(item); ;
+            }
 
 
 
