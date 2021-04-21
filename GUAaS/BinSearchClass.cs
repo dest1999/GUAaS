@@ -1,12 +1,13 @@
 ﻿namespace GUAaS
 {
-    public class BinSearchClass
+    public static class BinSearchClass
     {
         public static int BinarySearch(int[] arr, int value)
         {// сложность log(n)
-            int upBorder = arr.Length - 1;
-            int index;
-            int lowBorder = 0;
+            int lowBorder = 0,
+                index,
+                upBorder = arr.Length - 1;
+            
             while (lowBorder <= upBorder)
             {
                 index = (lowBorder + upBorder) / 2;
