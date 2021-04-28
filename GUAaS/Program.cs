@@ -8,33 +8,43 @@ using BenchmarkDotNet.Running;
 //Потом выполните замер производительности проверки наличия строки в массиве и HashSet. Выложите код и результат замеров
 namespace GUAaS
 {
-    class Program
+    public class Bench
     {
-        static int size = 100_000;
+        static int size = 10_000;
         static string[] strArray = new string [size];
         static string strToFind;
         static HashSet<string> hashset;
         static Random rnd = new Random();
         static bool foundInArray, foundInHashSet;
 
-        static void Main(string[] args)
+        public Bench()
         {
             FillRandomString();
             strToFind = strArray[rnd.Next(strArray.Length)];
-
         }
 
-        private static void FindInArray()
+        [Benchmark]
+        public void FindInArrayByIndexOf()
+        {
+            Array.IndexOf(strArray, strToFind);
+        }
+
+        [Benchmark]
+        public void FindInArray()
         {
             foundInArray = false;
             foreach (var item in strArray)
             {
                 if (item == strToFind)
+                {
                     foundInArray = true;
+                    break;
+                }
             }
-        }
 
-        private static void FindInHashSet()
+        }
+        [Benchmark]
+        public void FindInHashSet()
         {
             if (hashset.Contains(strToFind))
             {
@@ -47,7 +57,9 @@ namespace GUAaS
         }
 
 
-        private static void FillRandomString()
+
+
+        private void FillRandomString()
         {
             hashset = new HashSet<string>();
             for (int i = 0; i < strArray.Length; i++)
@@ -60,5 +72,20 @@ namespace GUAaS
                 hashset.Add(strArray[i]);
             }
         }
+
+    }
+
+
+
+    public class Program
+    {
+
+
+        static void Main(string[] args)
+        {
+            
+            BenchmarkRunner.Run(typeof(Program).Assembly);
+        }
+
     }
 }
