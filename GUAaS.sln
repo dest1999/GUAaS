@@ -6,6 +6,9 @@ MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HashSetVsArray", "GUAaS\HashSetVsArray.csproj", "{4E729ED2-8DD8-482E-B565-30616280C393}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DZ4", "DZ4", "{F4606184-4921-4963-B607-24A622C79BCD}"
+	ProjectSection(SolutionItems) = preProject
+		GUAaS\bin\Release\net5.0\BenchmarkDotNet.Artifacts\results\GUAaS.Bench-report-github.md = GUAaS\bin\Release\net5.0\BenchmarkDotNet.Artifacts\results\GUAaS.Bench-report-github.md
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
