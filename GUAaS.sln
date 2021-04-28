@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31205.134
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GUAaS", "GUAaS\GUAaS.csproj", "{4E729ED2-8DD8-482E-B565-30616280C393}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HashSetVsArray", "GUAaS\HashSetVsArray.csproj", "{4E729ED2-8DD8-482E-B565-30616280C393}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DZ4", "DZ4", "{F4606184-4921-4963-B607-24A622C79BCD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -18,6 +20,9 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{4E729ED2-8DD8-482E-B565-30616280C393} = {F4606184-4921-4963-B607-24A622C79BCD}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {5D6FC18C-897B-4BC7-828A-07327DD6A68B}
