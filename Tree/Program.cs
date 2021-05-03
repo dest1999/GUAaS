@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace BinaryTree
 {
@@ -6,46 +7,153 @@ namespace BinaryTree
     {
         static void Main(string[] args)
         {
-            Random rnd = new Random();
             Tree tree = new Tree();
             int tmp;
 
-            for (int i = 0; i < 20; i++)
+            #region Тестирование с заполнением случайными числами
+            
+            Random rnd = new Random();
+            Console.Write("Sequence is: ");
+            for (int i = 0; i < rnd.Next(10, 100); i++)
             {
                 tmp = rnd.Next(10, 100);
                 Console.Write(tmp + " ");
                 tree.AddItem(tmp);
             }
-            Console.WriteLine();
-            Console.WriteLine(tree.count);
 
-            foreach (var item in TreeHelper.GetTreeInLine(tree))
+
+            #endregion
+
+            #region Тестирование с предзаданными значениями
+            //Console.Clear();
+            //tree.Clear();
+            //int[] arr = { 48, 22, 92, 35, 22, 57, 31, 10 , 49, 65, 19, 23, 50, 64, 76, 86, 57, 56, 52, 75, 72, 71, 81 };
+            //foreach (var item in arr)
+            //{
+            //    Console.Write(item + " ");
+            //    tree.AddItem(item);
+            //}
+
+            #endregion
+
+
+            Console.WriteLine("\nBFS in action:");
+            tmp = 0;
+            foreach (var item in BFS(tree))
             {
-                Console.Write(item.Node.Value + " ");
+                Console.Write($"Step {++tmp}: ");
+                Console.WriteLine($"node value { (item.Node != null ? item.Node.Value : "is empty") } on {item.Depth} level");
+            }
+            Console.ReadKey();
+
+            Console.WriteLine("\n\nDFS in action:");
+            tmp = 0;
+            foreach (var item in DFS(tree))
+            {
+                Console.Write($"Step {++tmp}: ");
+                Console.WriteLine($"node value { (item.Node != null ? item.Node.Value : "is empty") } on {item.Depth} level");
+            }
+        }
+
+        //TODO Реализуйте DFS и BFS для дерева с выводом каждого шага в консоль.
+        public static List<NodeInfo> BFS(ITree tree)
+        {
+            var bufer = new Queue<NodeInfo>();
+            var returnList = new List<NodeInfo>(); //в коллекции сохраняются шаги, выведение в консоль вне метода
+            int depth = 1;
+            returnList.Add(new NodeInfo() { Node = tree.GetRoot(), Depth = depth });
+            bufer.Enqueue(returnList[0]);
+
+            while (bufer.Count != 0)
+            {
+                var element = bufer.Dequeue();
+                
+                depth = element.Depth + 1;
+
+                returnList.Add(new NodeInfo() { Node = element.Node.LeftChild, Depth = depth });
+                
+                if (element.Node.LeftChild != null)
+                {
+                    bufer.Enqueue(returnList[returnList.Count - 1]);
+                }
+                
+                returnList.Add(new NodeInfo() { Node = element.Node.RightChild, Depth = depth });
+
+                if (element.Node.RightChild != null)
+                {
+                    bufer.Enqueue(returnList[returnList.Count - 1]);
+                }
+
+            }
+            RemoveAllNullNodes(ref returnList);
+            //RemoveEmptyOnTail(ref returnList);
+            return returnList;
+        }
+
+        public static List<NodeInfo> DFS(ITree tree)
+        {
+            var bufer = new Stack<NodeInfo>();
+            var returnList = new List<NodeInfo>(); //в коллекции сохраняются шаги, выведение в консоль вне метода
+            int depth = 1;
+            returnList.Add(new NodeInfo() { Node = tree.GetRoot(), Depth = depth });
+            bufer.Push(returnList[0]);
+
+            while (bufer.Count != 0)
+            {
+                var element = bufer.Pop();
+
+                depth = element.Depth + 1;
+
+                returnList.Add(new NodeInfo() { Node = element.Node.LeftChild, Depth = depth });
+
+                if (element.Node.LeftChild != null)
+                {
+                    bufer.Push(returnList[returnList.Count - 1]);
+                }
+
+                returnList.Add(new NodeInfo() { Node = element.Node.RightChild, Depth = depth });
+
+                if (element.Node.RightChild != null)
+                {
+                    bufer.Push(returnList[returnList.Count - 1]);
+                }
+
+            }
+            RemoveAllNullNodes(ref returnList);
+            //RemoveEmptyOnTail(ref returnList);
+            return returnList;
+        }
+
+        private static void RemoveAllNullNodes(ref List<NodeInfo> returnList)
+        {
+            int counter = 0;
+            var emptyNodesList = new List<int>();
+            foreach (var item in returnList)
+            {
+                if (item.Node == null)
+                {
+                    emptyNodesList.Add(counter);
+                }
+                counter++;
             }
 
-            Console.Clear();
+            returnList.RemoveAll(NodeIsNull);
 
-            //TEST!!!!!!!!!!!!111111111111111111111
-            tree.Clear();
-            int[] arr = { 48, 22, 92, 35, 22, 57, 31, 10, 49, 65, 19, 23, 50, 64, 76, 86, 57, 56, 52, 75, 72, 71, 81 };
-            foreach (var item in arr)
+        }
+
+        private static bool NodeIsNull(NodeInfo node)
+        {
+            return node.Node == null;
+        }
+
+        private static void RemoveEmptyOnTail(ref List<NodeInfo> returnList)
+        {
+            int counter = returnList.Count - 1;
+            while (returnList[counter].Node == null)
             {
-                tree.AddItem(item);
+                returnList.RemoveAt(counter);
+                counter--;
             }
-
-
-            foreach (var item in TreeHelper.GetTreeInLine(tree))
-            {
-                Console.WriteLine($"{item.Node.Value} - {item.Depth}");
-            }
-
-            Console.WriteLine("****************************");
-
-            tree.PrintTree();
-
-
-
 
         }
     }

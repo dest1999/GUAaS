@@ -3,8 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31205.134
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HashSetVsArray", "GUAaS\HashSetVsArray.csproj", "{4E729ED2-8DD8-482E-B565-30616280C393}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DZ5", "DZ5", "{F4606184-4921-4963-B607-24A622C79BCD}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BinaryTree", "Tree\BinaryTree.csproj", "{0F6EED47-60DB-49E7-AB03-D18EB443FC5B}"
@@ -15,10 +13,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{4E729ED2-8DD8-482E-B565-30616280C393}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{4E729ED2-8DD8-482E-B565-30616280C393}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{4E729ED2-8DD8-482E-B565-30616280C393}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{4E729ED2-8DD8-482E-B565-30616280C393}.Release|Any CPU.Build.0 = Release|Any CPU
 		{0F6EED47-60DB-49E7-AB03-D18EB443FC5B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{0F6EED47-60DB-49E7-AB03-D18EB443FC5B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0F6EED47-60DB-49E7-AB03-D18EB443FC5B}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -28,7 +22,6 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{4E729ED2-8DD8-482E-B565-30616280C393} = {F4606184-4921-4963-B607-24A622C79BCD}
 		{0F6EED47-60DB-49E7-AB03-D18EB443FC5B} = {F4606184-4921-4963-B607-24A622C79BCD}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
