@@ -91,7 +91,46 @@ namespace BinaryTree
 
         public void PrintTree()
         {
-            throw new NotImplementedException();
+            //Пока не готово
+            var bufer = new Queue<NodeInfo>();
+            var returnList = new List<NodeInfo>();
+            //var root = new NodeInfo() { Node = Root };
+            bufer.Enqueue(new NodeInfo() { Node = root, Depth = 1 });
+            int depth;
+
+            while (bufer.Count != 0)
+            {
+                var element = bufer.Dequeue();
+                returnList.Add(element);
+
+                depth = element.Depth + 1;
+
+                if (element.Node.LeftChild != null)
+                {
+                    bufer.Enqueue(new NodeInfo() { Node = element.Node.LeftChild, Depth = depth });
+                }
+                else
+                {
+                    returnList.Add(new NodeInfo() { Node = null, Depth = depth });
+                }
+
+                if (element.Node.RightChild != null)
+                {
+                    bufer.Enqueue(new NodeInfo() { Node = element.Node.LeftChild, Depth = depth });
+                }
+                else
+                {
+                    returnList.Add(new NodeInfo() { Node = null, Depth = depth });
+                }
+
+            }
+
+
+            foreach (var item in returnList)
+            {
+                Console.WriteLine($"{item.Depth} {(item.Node != null ? item.Node.Value : 0)} ");
+            }
+            //Console.WriteLine("Not ready");
         }
 
         public void RemoveItem(int value)
