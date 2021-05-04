@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BinaryTree
 {
-    class Tree : ITree
+    public class Tree : ITree
     {
         public TreeNode Root { get; set; }
         private TreeNode parent;

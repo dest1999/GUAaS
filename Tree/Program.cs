@@ -3,14 +3,14 @@ using System.Collections.Generic;
 
 namespace BinaryTree
 {
-    class Program
+    public class Program
     {
         static void Main(string[] args)
         {
             Tree tree = new Tree();
             int tmp;
 
-            #region Тестирование с заполнением случайными числами
+            #region отладка с заполнением случайными числами
             
             Random rnd = new Random();
             Console.Write("Sequence is: ");
@@ -24,7 +24,7 @@ namespace BinaryTree
 
             #endregion
 
-            #region Тестирование с предзаданными значениями
+            #region отладка с предзаданными значениями
             //Console.Clear();
             //tree.Clear();
             //int[] arr = { 48, 22, 92, 35, 22, 57, 31, 10 , 49, 65, 19, 23, 50, 64, 76, 86, 57, 56, 52, 75, 72, 71, 81 };
