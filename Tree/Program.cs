@@ -6,20 +6,20 @@ namespace BinaryTree
     {
         static void Main(string[] args)
         {
-            Random rnd = new Random();
             Tree tree = new Tree();
             int tmp;
 
-            for (int i = 0; i < 16; i++)
+            int[] arr = { 65, 33, 51, 88, 83, 57, 46, 71, 22, 99 }; //{23, 41, 62, 73, 17, 32, 23, 41, 43, 11};
+
+
+            for (int i = 0; i < arr.Length; i++)
             {
-                tmp = rnd.Next(10, 100);
-                Console.Write(tmp + " ");
-                tree.AddItem(tmp);
+                Console.Write(arr[i] + " ");
+                tree.AddItem(arr[i]);
             }
             Console.WriteLine("\n****************************");
             Console.WriteLine("Tree count: " + tree.count);
             tree.PrintTree();
-            Console.WriteLine();
         }
     }
 }

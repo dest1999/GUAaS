@@ -91,10 +91,8 @@ namespace BinaryTree
 
         public void PrintTree()
         {
-            //Пока не готово
             var bufer = new Queue<NodeInfo>();
             var returnList = new List<NodeInfo>();
-            //var root = new NodeInfo() { Node = Root };
             int depth = 1;
             returnList.Add(new NodeInfo() { Node = root, Depth = depth });
             bufer.Enqueue(returnList[0]);
@@ -102,37 +100,66 @@ namespace BinaryTree
             while (bufer.Count != 0)
             {
                 var element = bufer.Dequeue();
-
                 depth = element.Depth + 1;
-
                 returnList.Add(new NodeInfo() { Node = element.Node.LeftChild, Depth = depth });
-
                 if (element.Node.LeftChild != null)
                 {
                     bufer.Enqueue(returnList[returnList.Count - 1]);
                 }
-
                 returnList.Add(new NodeInfo() { Node = element.Node.RightChild, Depth = depth });
-
                 if (element.Node.RightChild != null)
                 {
                     bufer.Enqueue(returnList[returnList.Count - 1]);
                 }
-
             }
 
             int counter = returnList.Count - 1;
             while (returnList[counter].Node == null)
-            {
+            {// удаляем nulls из хвоста
                 returnList.RemoveAt(counter);
                 counter--;
             }
 
-            foreach (var item in returnList)
+            var strings = new List<string>( returnList[returnList.Count - 1].Depth );
+
+            for (int i = 0; i < strings.Capacity; i++)
             {
-                Console.WriteLine($"{item.Depth} {(item.Node != null ? item.Node.Value : "null")} ");
+                strings.Add("");
             }
-            //Console.WriteLine("Not ready");
+
+            string space = "ss", emptyElement = "  ";
+            foreach (var nodeInfo in returnList)
+            {// формируем строки для дальнейшего вывода
+                if ( strings[nodeInfo.Depth - 1] !=  "" )
+                {
+                    strings[nodeInfo.Depth - 1] += space;
+                }
+                if (nodeInfo.Node == null)
+                {
+                    strings[nodeInfo.Depth - 1] += emptyElement;
+                }
+                else
+                {
+                    strings[nodeInfo.Depth - 1] += nodeInfo.Node.Value;
+                }
+            }
+
+            strings[strings.Count - 1] = strings[strings.Count - 1].Replace("ss", "  ");
+            int strLength = 2 * ((int)Math.Pow(2, strings.Count - 1) * 2 - 1); // количество символов в последней строке
+
+            strings[0] = new string(' ', (strLength - strings[0].Length) / 2) + strings[0];
+
+            for (int i = 1; i < strings.Count - 1; i++)
+            {
+                int qtySpaces = (strLength - (int)(Math.Pow(2, i) * 2)) / (int)Math.Pow(2, i);
+                string spaceDivider = new string(' ', qtySpaces+1);
+                strings[i] = new string(' ', qtySpaces / 2) + strings[i].Replace("ss", spaceDivider);
+            }
+            foreach (var item in strings)
+            {
+                Console.WriteLine("\n");
+                Console.WriteLine(item);
+            }
         }
 
         public void RemoveItem(int value)
