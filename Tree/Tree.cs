@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BinaryTree
 {
-    class Tree : ITree
+    public class Tree : ITree
     {
         public TreeNode root { get; set; }
         private TreeNode parent;
@@ -210,9 +210,6 @@ namespace BinaryTree
             {
                 throw new NotImplementedException();
             }
-
-
-
             count--;
         }
     }
