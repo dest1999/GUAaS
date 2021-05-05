@@ -72,7 +72,7 @@ namespace BinaryTree.Tests
             int toDel = 88;
             tree.RemoveItem(toDel);
 
-            tree.GetNodeByValue(toDel);
+            tree.RemoveItem(toDel);
         }
     }
 }

@@ -206,11 +206,136 @@ namespace BinaryTree
                 }
             }
             // он весь в потомках
+            // Решение: взять любого сына с одним внуком, либо если таких нет, то стыкуем поддеревья
+            // PS Если берем сына справа то у него не должно быть ветви влево и наоборот
+
             else
             {
-                throw new NotImplementedException();
+                if (nodeToDel.LeftChild.RightChild == null)
+                {// левый подходит
+                    nodeToDel.LeftChild.RightChild = nodeToDel.RightChild;
+                    if (direction)
+                    {
+                        parent.RightChild = nodeToDel.LeftChild;
+                    }
+                    else
+                    {
+                        parent.LeftChild = nodeToDel.LeftChild;
+                    }
+                }
+                else if (nodeToDel.RightChild.LeftChild == null)
+                {// правый подходит
+                    nodeToDel.RightChild.LeftChild = nodeToDel.LeftChild;
+                    if (direction)
+                    {
+                        parent.RightChild = nodeToDel.RightChild;
+                    }
+                    else
+                    {
+                        parent.LeftChild = nodeToDel.RightChild;
+                    }
+                }
+                else
+                {   //ни один не подходит
+                    //1 определяем результирующую длину плечей
+                    //2 стыкуем плечи с минимальной суммарной длиной
+
+                    int rightLength, leftLength;
+
+                    (rightLength, leftLength) = ReconnectBranches(nodeToDel);
+
+                    //if (leftLength >= rightLength)
+                    //{// стыкуем правые плечи
+
+                    //}
+                    //else
+                    //{// стыкуем левые плечи
+
+                    //}
+
+
+
+
+
+
+                }
             }
+
+
+
             count--;
         }
+
+        private (int, int) ReconnectBranches(TreeNode nodeToDel)
+        {
+            int rightLength = 0, leftLength = 0;
+            TreeNode tmpNode = nodeToDel;
+            TreeNode right1, right2, left1, left2;
+
+            while (tmpNode.LeftChild != null)
+            {
+                leftLength++;
+                tmpNode = tmpNode.LeftChild;
+            }
+            left2 = tmpNode;
+            tmpNode = nodeToDel.RightChild;
+            while (tmpNode.LeftChild != null)
+            {
+                leftLength++;
+                tmpNode = tmpNode.LeftChild;
+            }
+            left1 = tmpNode;
+
+
+
+            tmpNode = nodeToDel;
+            while (tmpNode.RightChild != null)
+            {
+                rightLength++;
+                tmpNode = tmpNode.RightChild;
+            }
+            right2 = tmpNode;
+            tmpNode = nodeToDel.LeftChild;
+            while (tmpNode.RightChild != null)
+            {
+                rightLength++;
+                tmpNode = tmpNode.RightChild;
+            }
+            right1 = tmpNode;
+
+            if (leftLength >= rightLength)
+            {// стыкуем правые плечи
+                right1.RightChild = nodeToDel.RightChild;
+                if (direction)
+                {
+                    parent.RightChild = right1;
+                }
+                else
+                {
+                    parent.LeftChild = right1;
+                }
+            }
+            else
+            {// стыкуем левые плечи
+                left1.LeftChild = nodeToDel.LeftChild;
+                if (direction)
+                {
+                    parent.RightChild = left1;
+                }
+                else
+                {
+                    parent.LeftChild = left1;
+                }
+            }
+
+
+
+            return (rightLength, leftLength);
+        }
+
+
+
+
+
     }
 }

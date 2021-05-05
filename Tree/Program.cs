@@ -17,6 +17,7 @@ namespace BinaryTree
             Console.WriteLine("\n****************************");
             Console.WriteLine("Tree count: " + tree.count);
             tree.PrintTree();
+
         }
     }
 }
