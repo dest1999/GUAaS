@@ -95,40 +95,42 @@ namespace BinaryTree
             var bufer = new Queue<NodeInfo>();
             var returnList = new List<NodeInfo>();
             //var root = new NodeInfo() { Node = Root };
-            bufer.Enqueue(new NodeInfo() { Node = root, Depth = 1 });
-            int depth;
+            int depth = 1;
+            returnList.Add(new NodeInfo() { Node = root, Depth = depth });
+            bufer.Enqueue(returnList[0]);
 
             while (bufer.Count != 0)
             {
                 var element = bufer.Dequeue();
-                returnList.Add(element);
 
                 depth = element.Depth + 1;
 
+                returnList.Add(new NodeInfo() { Node = element.Node.LeftChild, Depth = depth });
+
                 if (element.Node.LeftChild != null)
                 {
-                    bufer.Enqueue(new NodeInfo() { Node = element.Node.LeftChild, Depth = depth });
+                    bufer.Enqueue(returnList[returnList.Count - 1]);
                 }
-                else
-                {
-                    returnList.Add(new NodeInfo() { Node = null, Depth = depth });
-                }
+
+                returnList.Add(new NodeInfo() { Node = element.Node.RightChild, Depth = depth });
 
                 if (element.Node.RightChild != null)
                 {
-                    bufer.Enqueue(new NodeInfo() { Node = element.Node.LeftChild, Depth = depth });
-                }
-                else
-                {
-                    returnList.Add(new NodeInfo() { Node = null, Depth = depth });
+                    bufer.Enqueue(returnList[returnList.Count - 1]);
                 }
 
             }
 
+            int counter = returnList.Count - 1;
+            while (returnList[counter].Node == null)
+            {
+                returnList.RemoveAt(counter);
+                counter--;
+            }
 
             foreach (var item in returnList)
             {
-                Console.WriteLine($"{item.Depth} {(item.Node != null ? item.Node.Value : 0)} ");
+                Console.WriteLine($"{item.Depth} {(item.Node != null ? item.Node.Value : "null")} ");
             }
             //Console.WriteLine("Not ready");
         }
