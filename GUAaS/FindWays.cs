@@ -7,8 +7,8 @@ namespace GUAaS
     {
         static Random rnd = new Random();
         const int N = 20;
-        const int M = 37;
-        const int countBarriers = 15; // количество препятствий
+        const int M = 35;
+        const int countBarriers = 25; // количество препятствий
         static void Main(string[] args)
         {
             ulong?[,] arr = new ulong?[N, M];
