@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31205.134
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GUAaS", "GUAaS\GUAaS.csproj", "{4E729ED2-8DD8-482E-B565-30616280C393}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GUAaS", "GUAaS\GUAaS.csproj", "{4E729ED2-8DD8-482E-B565-30616280C393}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GUAaSTests1", "GUAaSTests1\GUAaSTests1.csproj", "{43067140-B1FE-41E7-99D5-EE7AB4B1A097}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{4E729ED2-8DD8-482E-B565-30616280C393}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4E729ED2-8DD8-482E-B565-30616280C393}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4E729ED2-8DD8-482E-B565-30616280C393}.Release|Any CPU.Build.0 = Release|Any CPU
+		{43067140-B1FE-41E7-99D5-EE7AB4B1A097}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{43067140-B1FE-41E7-99D5-EE7AB4B1A097}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{43067140-B1FE-41E7-99D5-EE7AB4B1A097}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{43067140-B1FE-41E7-99D5-EE7AB4B1A097}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

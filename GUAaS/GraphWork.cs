@@ -15,42 +15,43 @@ namespace GUAaS
              *               5  4  5
              *               это будет неорграф
              */
-            //List<Node> graph = new List<Node>();
-
+            
             Graph graph = new Graph();
 
             foreach (var item in values)
             {
-                var node = new Node(item);
-                graph.AddNode(node);
+                graph.AddNode(new Node(item));
             }
 
-            var edgs = new List<Edge>();
-            edgs.Add(new Edge(graph.Nodes[1]));
-            edgs.Add(new Edge(graph.Nodes[2]));
-            edgs.Add(new Edge(graph.Nodes[4]));
-            Node n = new Node(1, edgs);
+            graph.Nodes[0].AddEdge(graph.Nodes[1]);
+            graph.Nodes[0].AddEdge(graph.Nodes[2]);
+            graph.Nodes[0].AddEdge(graph.Nodes[4]);
 
-            //graph.Nodes[1].AddEdge(graph.Nodes[2]);
-            //graph.Nodes[1].AddEdge(graph.Nodes[3]);
-            //graph.Nodes[1].AddEdge(graph.Nodes[5]);
+            graph.Nodes[1].AddEdge(graph.Nodes[0]);
+            graph.Nodes[1].AddEdge(graph.Nodes[2]);
+            graph.Nodes[1].AddEdge(graph.Nodes[3]);
 
-            //graph.Nodes[2].AddEdge(graph.Nodes[1]);
-            //graph.Nodes[2].AddEdge(graph.Nodes[3]);
-            //graph.Nodes[2].AddEdge(graph.Nodes[4]);
+            graph.Nodes[2].AddEdge(graph.Nodes[0]);
+            graph.Nodes[2].AddEdge(graph.Nodes[1]);
+            graph.Nodes[2].AddEdge(graph.Nodes[4]);
 
-            //graph.Nodes[3].AddEdge(graph.Nodes[1]);
-            //graph.Nodes[3].AddEdge(graph.Nodes[2]);
-            //graph.Nodes[3].AddEdge(graph.Nodes[5]);
+            graph.Nodes[3].AddEdge(graph.Nodes[1]);
 
-            //graph.Nodes[4].AddEdge(graph.Nodes[2]);
+            graph.Nodes[4].AddEdge(graph.Nodes[0]);
+            graph.Nodes[4].AddEdge(graph.Nodes[2]);
 
-            //graph.Nodes[5].AddEdge(graph.Nodes[1]);
-            //graph.Nodes[5].AddEdge(graph.Nodes[3]);
-
-
-
-            Console.WriteLine(n);
+            int n = 3;
+            Console.WriteLine("BFS");
+            foreach (var item in graph.BFS(graph.FindNode(n)))
+            {
+                Console.WriteLine(item);
+            }
+            Console.WriteLine("\nDFS");
+            foreach (var item in graph.DFS(graph.FindNode(n)))
+            {
+                Console.WriteLine(item);
+            }
+            Console.WriteLine(graph.Count);
         }
 
 
