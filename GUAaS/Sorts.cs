@@ -30,7 +30,27 @@ namespace GUAaS
         }
         public void Add(int Value)
         {
-            list.Add(Value);
+            if (list.Count == 0)
+            {// пустой список
+                list.Add(Value);
+            }
+            else if (Value == Min)
+            {// вставляемый эл-т имеет минимальное значение
+                list.Insert(0, Value);
+            }
+            else
+            {
+                int index = list.BinarySearch(Value);
+                if (index < 0)
+                {
+                    list.Insert(~index, Value);
+                }
+                else
+                {
+                    list.Insert(index, Value);
+                }
+            }
+
         }
 
         public int CompareTo(Bucket bucket)
@@ -54,7 +74,7 @@ namespace GUAaS
         public BucketStore(int[] arr)
         {
             store = new();
-
+            /*
             if (arr.Length > 0)
             {
                 int min = arr[0] / 10 * 10;
@@ -65,7 +85,7 @@ namespace GUAaS
             {
                 throw new Exception("Input array can not be empty");
             }
-
+            */
             inputArray = arr;
             Distribution();
         }
@@ -91,10 +111,6 @@ namespace GUAaS
             }
             store.Sort();
 
-            foreach (var item in store)
-            {
-                item.Sort();
-            }
 
         }
 
