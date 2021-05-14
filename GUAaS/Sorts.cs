@@ -9,6 +9,7 @@ namespace GUAaS
         public int Min { get; }
         public int Max { get; }
         public List<int> list { get; }
+        public int Count => list.Count;
         public Bucket()
         {
             list = new List<int>();
@@ -24,22 +25,15 @@ namespace GUAaS
             Max = max;
             list.Add(value);
         }
-        public void Sort()
-        {
-            list.Sort();
-        }
+
         public void Add(int Value)
         {
-            if (list.Count == 0)
-            {// пустой список
-                list.Add(Value);
-            }
-            else if (Value == Min)
+            if (Value == Min)
             {// вставляемый эл-т имеет минимальное значение
                 list.Insert(0, Value);
             }
             else
-            {
+            {// Список изначально формируется сортированым, для поиска места вставки эл-та используем BinarySearch
                 int index = list.BinarySearch(Value);
                 if (index < 0)
                 {
@@ -50,9 +44,7 @@ namespace GUAaS
                     list.Insert(index, Value);
                 }
             }
-
         }
-
         public int CompareTo(Bucket bucket)
         {
             if (this.Min > bucket.Min)
@@ -64,7 +56,6 @@ namespace GUAaS
                 
         }
 
-        public int Count => list.Count;
     }
 
     public class BucketStore
@@ -106,12 +97,18 @@ namespace GUAaS
                 }
                 if (!added)
                 {
-                    store.Add(new Bucket(item / 10 * 10, (item / 10 * 10) + 10, item));
+                    int min = item / 10 * 10;
+                    int index = store.BinarySearch(new Bucket(min, min + 10));
+                    if (index < 0)
+                    {
+                        store.Insert(~index, new Bucket(item / 10 * 10, (item / 10 * 10) + 10, item));
+                    }
+                    else
+                    {
+                        store.Insert(index, new Bucket(item / 10 * 10, (item / 10 * 10) + 10, item));
+                    }
                 }
             }
-            store.Sort();
-
-
         }
 
         public override string ToString()
