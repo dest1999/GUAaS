@@ -151,26 +151,29 @@ namespace GUAaS
 
         static void Main(string[] args)
         {
-            Random rnd = new();
-            int[] arr = new int[300];
-            for (int i = 0; i < arr.Length; i++)
-            {
-                arr[i] = rnd.Next(30000);
-            }
-            BucketStore b1 = new(arr);
-            Array.Sort(arr);
-            foreach (var item in arr)
-            {
-                Console.Write(item + " ");
-            }
-            Console.WriteLine("\n");
-            //Console.WriteLine(b1.ToString());
+            #region BucketSorting
+            //Random rnd = new();
+            //int[] arr = new int[300];
+            //for (int i = 0; i < arr.Length; i++)
+            //{
+            //    arr[i] = rnd.Next(30000);
+            //}
+            //BucketStore b1 = new(arr);
+            //Array.Sort(arr);
+            //foreach (var item in arr)
+            //{
+            //    Console.Write(item + " ");
+            //}
+            //Console.WriteLine("\n");
+            ////Console.WriteLine(b1.ToString());
 
-            var bucketArr = b1.ToArray();
-            foreach (var item in bucketArr)
-            {
-                Console.Write(item + " ");
-            }
+            //var bucketArr = b1.ToArray();
+            //foreach (var item in bucketArr)
+            //{
+            //    Console.Write(item + " ");
+            //}
+            #endregion
+
 
 
 
@@ -185,7 +188,9 @@ namespace GUAaS
             //RndIntFileReaderWriter.FileReader(fileName);
             //Console.WriteLine("\n");
             #endregion
-            Console.ReadKey();
+
+            
+            RndIntFileReaderWriter.InitExtSort();
 
 
 
