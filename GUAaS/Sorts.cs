@@ -190,7 +190,7 @@ namespace GUAaS
             #endregion
 
             
-            RndIntFileReaderWriter.InitExtSort();
+            ExternalSort.InitExtSort();
 
 
 
